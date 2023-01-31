@@ -7,6 +7,6 @@ How to use:
 1.go to chrome://dino 
 2 Ctrl shift I 
 3 copy and paste code in console 
-3 or click source then snippets and create a snippet and paste the code 
+(or click source then snippets and create a snippet and paste the code and press ctrl+enter to run.)
 ```
-Difference: snippets can be edited with ease if you want to edit the menu.
+About Snippets: i use the snippet option in the chrome dev tools to code lots of things including this menu because it allows you to change the code then run it right away.
