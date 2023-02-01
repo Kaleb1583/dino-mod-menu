@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 console.clear();
 
 try { 
@@ -264,10 +264,21 @@ console.log("ai now automatically playing dino.")
 function changeTextureMenu() {
     MenuItemsVisibility(16, "hide")
     createMenuItemSubMenu(17, "<a id='hideTextureMenuButton' onclick='hideTextureMenu()'>(Back)</a>")
-    createMenuItemSubMenu(17, "<a id='mcTexture' onclick='changeTexture(1)'>Default Texture</a>", "changeTexture")
-    createMenuItemSubMenu(17, "<a id='defaultTexture' onclick='changeTexture(2)'>Minecraft Texture</a>", "changeTexture")
+    createMenuItemSubMenu(17, "<a id='defaultTexture' onclick='changeTexture(1)'>Default Texture</a>", "changeTexture")
+    createMenuItemSubMenu(17, "<a id='mcTexture' onclick='changeTexture(2)'>Minecraft Texture</a>", "changeTexture")
+    createMenuItemSubMenu(17, "<a id='customTexture' onclick='changeTexture(3)'>Custom Texture</a>", "changeTexture")
     document.getElementById("changeTexture").hidden = true;
     //document.getElementById("mcTexture").onclick = "changeTexture('mc')";
+}
+
+function isValidHttpUrl(string) {
+  let url;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+  return url.protocol === "http:" || url.protocol === "https:";
 }
 
 function changeTexture(texture) {
@@ -281,7 +292,15 @@ function changeTexture(texture) {
             document.getElementById('offline-resources-1x').src = 'https://i.imgur.com/vhUjTZL.png';
         } else {
             if (texture == 3) {
-                console.log("3rd texture")
+                var getUrlInput = prompt("Enter URL To PNG", "");
+                IsAUrl = isValidHttpUrl(getUrlInput);
+                if(IsAUrl) {
+                    document.getElementById('offline-resources-1x').src = getUrlInput;
+                    console.log("- Custom Texture -")
+                    console.log("Set Custom Texture. ("+getUrlInput+")")
+                    console.log("------------------")
+                }
+                
             }
         }
     }
@@ -567,7 +586,7 @@ createMenuItem(8, "<a onclick='lazers()'>Shoot Lazers (removes obstacles ahead) 
 createMenuItem(9, "<a onclick='beinvisible()'>Invisible (*DOES NOT MAKE YOU INVINCIBLE*)</a>")
 createMenuItem(10, "<a onclick='setGravity()'>Set Gravity </a><input onkeypress='validate(event)' id='gravityInput' value='0.6'></input><button id='gravitySetButton' onclick='setGravity()'>Set Gravity</button>");
 createMenuItem(11, "<a onclick='setGravityToNone()'>Go to space! (prob. forever) (press space after clicking me)</a>");
-createMenuItem(12, "<a onclick='freezeDino()'>Freeze (and get points)</a>");
+createMenuItem(12, "<a onclick='freezeDino()'> Freeze (and get points)</a>");
 createMenuItem(13, "<a onclick='breakGraphics()'>Break Graphics</a>");
 createMenuItem(14, "<a onclick='autoPlay()'> Auto Play (ai plays for you!)</a>")
 createMenuItem(15, "<a id='changeDimensions' onclick='dimensionsMenu();'>Game Window Dimensions</a>")
