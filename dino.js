@@ -622,8 +622,34 @@ function openSettingsMenu() {
     createMenuItemSubMenu(24, "-------------------")
     createMenuItemSubMenu(24,"<a onclick='makeBorderRGBLoop();'>RGB Loop</a>")
     createMenuItemSubMenu(24, "-------------------")
+    createMenuItemSubMenu(24, "<a onclick='setTitle();'>Set Window Title</a>")
+    createMenuItemSubMenu(24, "-------------------")
+    createMenuItemSubMenu(24, "<a onclick='toggleBodyHideKey()'>Hide Game & Menu (when on press ` or ~)</a>")
+    createMenuItemSubMenu(24, "-------------------")
     createMenuItemSubMenu(24, "<a onclick='deleteMenu();'>Delete Menu</a>")
     startLoop();
+}
+try {
+    deleteElementsById("HideBodyOn")
+} catch(err) {
+    
+}
+createElementVariable("HideBodyOn", "false")
+function toggleBodyHideKey() {
+    hide = getElementVariableValue("HideBodyOn")
+    if(hide == 'false') {
+        changeElementVariable("HideBodyOn", 'true')
+        document.body.hidden = true;
+    } else {
+        changeElementVariable("HideBodyOn", 'false')
+        document.body.hidden = false;
+    }
+}
+
+function setTitle() {
+    var input = prompt("Enter new title name:");
+    input = input.replace(/[&\/\\#,+()$~%.'":*?<>!@{}]/g, '');
+    document.title = input;
 }
 function startLoop() {
     updateMenuXY();
@@ -1050,7 +1076,7 @@ deleteElementsById("autoPlay")
 // - other stuff -
 document.getElementById("myNav").style = "width: 40%; opacity: 100; border: thick solid rgb(0, 0, 255); overflow: scroll; transform: translate3d(303px, 12px, 0px);";
 
-Runner.config.MAX_BLINK_COUNT = 6969696969420420;
+Runner.config.MAX_BLINK_COUNT = 69420;
 
 
 window.addEventListener('keydown', function() {
