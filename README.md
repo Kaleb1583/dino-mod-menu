@@ -2,6 +2,8 @@
 A javascript mod menu I made for chrome://dino
 So I was bored so I decided to make a mod menu for dino.
 
+Last Update: 2/1/23 6:50pm
+
 How to use:
 ```
 1.go to chrome://dino 
