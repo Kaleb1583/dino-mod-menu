@@ -94,7 +94,16 @@ function speedMenu() {
     createMenuItemSubMenu(2, "<a id='subMenu'>Max Speed </a><input  id='MaxSpeedInput'></input><button id='speedsubmenubutton' style='margin-right: 73%;' onclick='setMaxSpeed()'>Set</button><br>", "changeSpeed")
     createMenuItemSubMenu(2, "<a>-------------------------------</a>")
     createMenuItemSubMenu(2, "<a onclick='maxSpeed()'>Max Speed (^^^ max out all ^^^)</a>")
+    createMenuItemSubMenu(2, "<a>-------------------------------</a>")
+    createMenuItemSubMenu(2, "<a onclick='increaseSpeedOverTime();'>Increase Speed By 0.1 Every Sec (makes it a tab bit harder further on)</a>")
+    createMenuItemSubMenu(2, "<a>(^ and it resets every death ^)</a>")
     console.log("hid other items and created speed menu")
+}
+function increaseSpeedOverTime() {
+    Runner.instance_.currentSpeed = Runner.instance_.currentSpeed + 0.1;
+    setTimeout(function() {
+        increaseSpeedOverTime();
+    }, 1000);
 }
 function changeMenuItemOrder(MenuItemMoving, MenuItemAbove) {
     // it will put MenuItemMoving below MenuItemAbove
@@ -594,17 +603,83 @@ createMenuItem(16, "<a onclick='removeObstaclesOnVision()'>Remove Obstacles On V
 createMenuItem(17, "<a id='changeTexture' onclick='changeTextureMenu()'>Change Textures</a>")
 createMenuItem(18, "<a onclick='setDistance()'>Set Ms Per Frame (low = faster points and low = slower points)</a><input onkeypress='validate(event)' id='MsPerFrameInput'></input><button id='MsPerFrameSetButton' onclick='setMsPerFrame()'>Set Ms Per Frame</button>")
 createMenuItem(19, "<a id='toggleInfoMenu' onclick='updateInfoMenuVisibility();'>Toggle Info Menu</a>")
-// ---
 createMenuItem(20, "<a id='obstacleMenu' onclick='obstacleMenu()'>Obstacle Menu</a>")
 hideMenuItem(20)
-// ---
 createMenuItem(21, "<a id='removeBottomLine' onclick='removeBottomLine()'>Remove Bottom Line</a>")
 createMenuItem(22,"<a id='IncreaseObstacleCreationMenu' onclick='createObstacleCreationMenu()'>Increase Obstacle Creation Menu</a>")
 hideMenuItem(22);
-
 createMenuItem(23, "<a onclick='breakGame()'>Break Game</a>")
 createMenuItem(24, "<a id='menuSettingsA' onclick='openSettingsMenu()'>Menu Settings</a>")
+createMenuItem(25, "<a onclick='openJumpMenu()'>Jump Menu</a>")
+changeMenuItemOrder(25,23) // make 25 below 24
+createMenuItem(26, "<a id='soundMenu' onclick='openSoundMenu()'>Sound Menu</a>")
+changeMenuItemOrder(26,25)
+createMenuItem(27, "<a onclick='turnonflight()'>Turn on Flight (Up arrow = up & down arrow is down)</a>")
 //- end of menu items creation-
+
+function turnonflight() {
+    alert("(the key s is now duck instead of the down arrow!)")
+    window.addEventListener("keydown", checkKeyPressed, false);
+    Runner.keycodes.JUMP = {32:1} // remove up arrow from jump keycodes
+    Runner.keycodes.DUCK = {83:1} // set duck key to s
+    function checkKeyPressed(evt) {
+        if (evt.keyCode == "38") {
+            Runner.instance_.tRex.yPos = Runner.instance_.tRex.yPos-5;
+        } else {
+            if(evt.keyCode == "40") {
+                Runner.instance_.tRex.yPos = Runner.instance_.tRex.yPos+5;
+            } 
+        }
+    }
+}
+
+function openJumpMenu() {
+    
+}
+function openSoundMenu() {
+    MenuItemsVisibility(25, "hide")
+    document.getElementById("soundMenu").hidden = true;
+     createMenuItemSubMenu(26, "<a>--- Press anyone to play the sound ---</a>")
+    createMenuItemSubMenu(26, "<a onclick='playSound(1)'>SCORE</a>")
+    createMenuItemSubMenu(26, "<a onclick='playSound(2)'>HIT</a>")
+    createMenuItemSubMenu(26, "<a onclick='playSound(3)'>BUTTON_PRESS</a>")
+    createMenuItemSubMenu(26, "<a onclick='playSound(4)'>All (*earrape*)</a>")
+    createMenuItemSubMenu(26, "<a onclick='playSound(5)'>EARRAPE >>> chose how loud it is: </a><input id='TimesToPlayInput'></input>")
+}
+function playSound(sound) {
+    if(sound == 1) {
+        Runner.instance_.playSound(Runner.instance_.soundFx.SCORE)
+    } else {
+        if(sound == 2) {
+            Runner.instance_.playSound(Runner.instance_.soundFx.HIT)
+        } else {
+            if(sound == 3) {
+                Runner.instance_.playSound(Runner.instance_.soundFx.BUTTON_PRESS)
+            } else {
+                if(sound == 4) {
+                    Runner.instance_.playSound(Runner.instance_.soundFx.SCORE);Runner.instance_.playSound(Runner.instance_.soundFx.HIT);Runner.instance_.playSound(Runner.instance_.soundFx.BUTTON_PRESS)
+                } else {
+                    if(sound === 5) {
+                        input = document.getElementById("TimesToPlayInput").value;
+                        if(input == '') {
+                            input = 1;
+                        } else {
+                            if(input > 100) {
+                                alert("this is too loud that it will break the game sorry. try 100 or less")
+                            } else {
+                                for(i=1; i < (input+1); i++) { 
+                                    Runner.instance_.playSound(Runner.instance_.soundFx.SCORE);
+                                    Runner.instance_.playSound(Runner.instance_.soundFx.HIT);
+                                    Runner.instance_.playSound(Runner.instance_.soundFx.BUTTON_PRESS);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 function openSettingsMenu() {
     document.getElementById("menuSettingsA").hidden = true;
     MenuItemsVisibility(23, "hide")
@@ -879,6 +954,7 @@ setDistance(0);
 var menuItemsCount = getElementVariableValue("MenuItemsCount");
 
 function MenuItemsVisibility(except, hideorshow) {
+    document.getElementById("myNav").style.transform = 'translate3d(91px, 463px, 0px)';
     for (let y = 0; y < Number(menuItemsCount); y++) {
         if (isNaN(except)) {
             console.log("no exceptions")
