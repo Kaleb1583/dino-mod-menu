@@ -611,10 +611,12 @@ hideMenuItem(22);
 createMenuItem(23, "<a onclick='breakGame()'>Break Game</a>")
 createMenuItem(24, "<a id='menuSettingsA' onclick='openSettingsMenu()'>Menu Settings</a>")
 createMenuItem(25, "<a onclick='openJumpMenu()'>Jump Menu</a>")
+hideMenuItem(25)
 changeMenuItemOrder(25,23) // make 25 below 24
 createMenuItem(26, "<a id='soundMenu' onclick='openSoundMenu()'>Sound Menu</a>")
 changeMenuItemOrder(26,25)
 createMenuItem(27, "<a onclick='turnonflight()'>Turn on Flight (Up arrow = up & down arrow is down)</a>")
+changeMenuItemOrder(27, 26)
 //- end of menu items creation-
 
 function turnonflight() {
