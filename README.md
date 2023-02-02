@@ -10,3 +10,5 @@ How to use:
 (or click source then snippets and create a snippet and paste the code and press ctrl+enter to run)
 ```
 About Snippets: i use the snippet option in the chrome dev tools to code lots of things including this menu because it allows you to change the code then run it right away.
+
+Unknown Cheats Post: https://www.unknowncheats.me/forum/other-games/568906-google-dino-game.html
