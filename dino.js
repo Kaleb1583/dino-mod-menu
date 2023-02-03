@@ -100,10 +100,14 @@ function speedMenu() {
     console.log("hid other items and created speed menu")
 }
 function increaseSpeedOverTime() {
-    Runner.instance_.currentSpeed = Runner.instance_.currentSpeed + 0.1;
-    setTimeout(function() {
-        increaseSpeedOverTime();
-    }, 1000);
+    if(Runner.instance_.tRex.status == "CRASHED") {
+        // do nothing
+     } else {
+        Runner.instance_.currentSpeed = Runner.instance_.currentSpeed + 0.2;
+        setTimeout(function() {
+            increaseSpeedOverTime();
+        }, 1000);
+    }
 }
 function changeMenuItemOrder(MenuItemMoving, MenuItemAbove) {
     // it will put MenuItemMoving below MenuItemAbove
@@ -275,7 +279,9 @@ function changeTextureMenu() {
     createMenuItemSubMenu(17, "<a id='hideTextureMenuButton' onclick='hideTextureMenu()'>(Back)</a>")
     createMenuItemSubMenu(17, "<a id='defaultTexture' onclick='changeTexture(1)'>Default Texture</a>", "changeTexture")
     createMenuItemSubMenu(17, "<a id='mcTexture' onclick='changeTexture(2)'>Minecraft Texture</a>", "changeTexture")
-    createMenuItemSubMenu(17, "<a id='customTexture' onclick='changeTexture(3)'>Custom Texture</a>", "changeTexture")
+    createMenuItemSubMenu(17, "<a id='colorTexture' onclick='changeTexture(3)'>Color (some things may look weird)</a>")
+    createMenuItemSubMenu(17, "<a id='customTexture' onclick='changeTexture(4)'>Custom Texture</a>", "changeTexture")
+
     document.getElementById("changeTexture").hidden = true;
     //document.getElementById("mcTexture").onclick = "changeTexture('mc')";
 }
@@ -298,18 +304,23 @@ function changeTexture(texture) {
     } else {
         if (texture == 2) {
             console.log("turning on minecraft textures")
-            document.getElementById('offline-resources-1x').src = 'https://i.imgur.com/vhUjTZL.png';
+            document.getElementById('offline-resources-1x').src = '   ';
         } else {
-            if (texture == 3) {
-                var getUrlInput = prompt("Enter URL To PNG", "");
-                IsAUrl = isValidHttpUrl(getUrlInput);
-                if(IsAUrl) {
-                    document.getElementById('offline-resources-1x').src = getUrlInput;
-                    console.log("- Custom Texture -")
-                    console.log("Set Custom Texture. ("+getUrlInput+")")
-                    console.log("------------------")
-                }
+            if(texture == 3) {
+                document.getElementById('offline-resources-1x').src = 'https://i.imgur.com/O4QxhUD.png';
+                console.log("made game colorful.")
+            } else {
+                if (texture == 4) {
+                    var getUrlInput = prompt("Enter URL To PNG", "");
+                    IsAUrl = isValidHttpUrl(getUrlInput);
+                    if(IsAUrl) {
+                        document.getElementById('offline-resources-1x').src = getUrlInput;
+                        console.log("- Custom Texture -")
+                        console.log("Set Custom Texture. ("+getUrlInput+")")
+                        console.log("------------------")
+                    }
                 
+                }
             }
         }
     }
@@ -333,6 +344,8 @@ function hideTextureMenu() {
     //document.getElementById("changeSpeed").hidden = false;
     deleteElementsById("mcTexture")
     deleteElementsById("defaultTexture")
+    deleteElementsById("colorTexture")
+    deleteElementsById("customTexture")
     deleteElementsById("hideTextureMenuButton")
     deleteElementsById("MenuItemSubItem")
     document.getElementById("changeTexture").hidden = false;
@@ -626,10 +639,18 @@ function turnonflight() {
     Runner.keycodes.DUCK = {83:1} // set duck key to s
     function checkKeyPressed(evt) {
         if (evt.keyCode == "38") {
-            Runner.instance_.tRex.yPos = Runner.instance_.tRex.yPos-5;
+            if(Runner.instance_.tRex.status == "CRASHED") {
+                // do nothing
+            } else {
+                Runner.instance_.tRex.yPos = Runner.instance_.tRex.yPos-5;
+            }
         } else {
             if(evt.keyCode == "40") {
-                Runner.instance_.tRex.yPos = Runner.instance_.tRex.yPos+5;
+                if(Runner.instance_.tRex.status == "CRASHED") {
+                    // do nothing
+                } else {
+                    Runner.instance_.tRex.yPos = Runner.instance_.tRex.yPos+5;
+                }
             } 
         }
     }
