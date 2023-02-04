@@ -5,14 +5,11 @@ So I was bored so I decided to make a mod menu for dino.
 How to use:
 ```
 1.go to chrome://dino 
-2 Ctrl shift I 
+2 Ctrl + Shift + I 
 3 copy and paste code in console 
-(or click source then snippets and create a snippet and paste the code and press ctrl+enter to run)
 ```
-About Snippets: i use the snippet option in the chrome dev tools to code lots of things including this menu because it allows you to change the code then run it right away.
+Or you can go to this site that automatically has the mod menu: https://dino.kaleb1583.repl.co/
 
 Unknown Cheats Post: https://www.unknowncheats.me/forum/other-games/568906-google-dino-game.html
-
-website with dino and mod menu: https://dino.kaleb1583.repl.co/
 
 Last Update: 2/2/23 2:12am CST
