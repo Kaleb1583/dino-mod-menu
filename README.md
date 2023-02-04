@@ -12,4 +12,4 @@ Or you can go to this site that automatically has the mod menu: https://dino.kal
 
 Unknown Cheats Post: https://www.unknowncheats.me/forum/other-games/568906-google-dino-game.html
 
-Last Update: 2/2/23 2:12am CST
+Last Update: 2/4/23 3:19am CST
