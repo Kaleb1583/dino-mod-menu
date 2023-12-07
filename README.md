@@ -1,6 +1,7 @@
 # dino-mod-menu
 A javascript mod menu I made for chrome://dino
 So I was bored so I decided to make a mod menu for dino.
+theres no point but here:
 
 How to use:
 ```
@@ -13,3 +14,5 @@ Or you can go to this site that automatically has the mod menu: https://dino.kal
 Unknown Cheats Post: https://www.unknowncheats.me/forum/other-games/568906-google-dino-game.html
 
 Last Update: 2/4/23 3:19am CST
+
+
