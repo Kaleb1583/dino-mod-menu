@@ -9,11 +9,9 @@ How to use:
 2 Ctrl + Shift + I 
 3 copy and paste code in console 
 ```
-Or you can go to this site that automatically has the mod menu: https://dino.kaleb1583.repl.co/
+Or site on replit that has the mod menu: https://dino.kaleb1583.repl.co/ (replit is paywalling everything so you need to fork it and run it to be able to use it)
 
 Unknown Cheats Post: https://www.unknowncheats.me/forum/other-games/568906-google-dino-game.html
 
-Last Update: 2/4/23 3:19am CST
-
-(README Updated 12/7/23)
-(i came back to get delete element by id function and updated ts)
+Last Updated: 2/4/23 3:19am CST
+README Last Updated: 7/22/24 8:05am CST
