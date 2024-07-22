@@ -13,6 +13,6 @@ Or site on replit that has the mod menu: https://dino.kaleb1583.repl.co/ (replit
 
 Unknown Cheats Post: https://www.unknowncheats.me/forum/other-games/568906-google-dino-game.html
 
-Last Updated: 2/4/23 3:19am CST
+Mod Menu Last Updated: 2/4/23 3:19am CST
  /// 
-README Last Updated: 7/22/24 8:05am CST
+README Last Updated: 7/22/24 8:07am CST
