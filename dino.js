@@ -1,12 +1,14 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 console.clear();
 
+createElementVariable("version", "V.1.1") // (in this project i use hidden elements as variable storage)
+
 try { 
     deleteElementsById("version") // delete old version element variables
 } catch(err) {
     console.log(err)
 }
-createElementVariable("version", "V2")
+
 
 try {
     deleteElementsById("myNav")
