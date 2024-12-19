@@ -1,14 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 console.clear();
 
-createElementVariable("version", "V.1") // (in this project i use hidden elements as variable storage)
-
-try { 
-    deleteElementsById("version") // delete old version element variables
-} catch(err) {
-    console.log(err)
-}
-
 
 try {
     deleteElementsById("myNav")
@@ -597,8 +589,7 @@ function hideMenuItem(number) {
 }
 // menus need ids for the submenu function so it can hide the text that was clicked to open the menu
 createMenuItem(1, "<a> --- Dino Hacks --- </a>");
-var version = getElementVariableValue("version")
-var newHTML = "<br><a> --- Dino Hacks "+ version +"--- </a><br>";
+var newHTML = "<br><a> --- Dino Hacks --- </a><br>";
 document.getElementById("MenuNumber1").innerHTML = newHTML;
 createMenuItem(2, "<a id='changeSpeed' onclick='speedMenu()'>Change Speed</a>");
 createMenuItem(3, "<a onclick='removeObstacles()'> Remove All Obstacles </a>");
@@ -846,10 +837,9 @@ function makeBorderRGBLoop() {
     myLoop();
 }
 function deleteMenu() {
-    //menuElement MenuItemsCount version ShowInfoMenu InfoMenu
+    //menuElement MenuItemsCount ShowInfoMenu InfoMenu
     deleteElementsById("menuElement")
     deleteElementsById("MenuItemsCount")
-    deleteElementsById("version")
     deleteElementsById("ShowInfoMenu")
     deleteElementsById("InfoMenu")
     function myLoop()  {} // without this the rgb loop keeps going if its on and trys to set a non exsisting element's style
